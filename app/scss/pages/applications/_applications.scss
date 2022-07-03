@@ -1,0 +1,200 @@
+.applications {
+    font-family: 'Montserrat';
+    font-weight: 600;
+
+    $grid_columns: 78px 15% 23% 17% 12% 12% auto;
+    $grid_columns_mob: 60px 13% 25% 17% 10% 12% auto;
+    // .applications__container
+
+    &__container {
+        max-width: $container+12+px;
+    }
+
+    // .applications__table
+
+    &__table {
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+            width: 8px; height: 8px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 15px;
+            
+            background-color: padding-box;
+        }
+        &::-webkit-scrollbar-track {
+            background: var(--accent-bg);
+            border-radius: 15px;
+        }
+
+        padding: 45px 0 15px 0;
+
+        &--wrapper {
+            display: flex;
+            flex-direction: column;
+
+            min-width: 925px;
+            @include _992 {
+                min-width: 1140px;
+            }
+        }
+    }
+
+    // .applications__header
+
+    &__header {
+        padding: 0 6px;
+
+        display: grid;
+        grid-template-columns: $grid_columns_mob;
+        @include _992 {
+            grid-template-columns: $grid_columns;
+        }
+        // .applications__header--param
+
+        &--param {
+            align-self: center;
+
+            font-size: 1rem;
+            @include _992 {
+                font-size: 1.25rem;
+            }
+            line-height: 133%;
+
+            text-align: center;
+            color: var(--dark-gray);
+
+            border-right: 1px solid var(--light);
+
+            &._accent {
+                border-right: 0;
+
+                color: var(--white);
+                background: var(--accent);
+
+                padding: 6px;
+                border-radius: 10px;
+            }
+        }
+
+        // .applications__header--time
+
+        &--time {
+        }
+    }
+
+    // .applications__sort
+
+    &__sort {
+        user-select: none;
+
+        position: relative;
+        // .applications__sort--input
+
+        &--input {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%,-50%);
+
+            opacity: 0; visibility: hidden;
+        }
+
+        &--input:checked + &--label &--select-arrow {
+            transform: scaleY(-1);
+        }
+
+        // .applications__sort--label
+
+        &--label {
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        // .applications__sort--select-arrow
+
+        &--select-arrow {
+            font-size: 10px;
+
+            display: inline-block;
+            margin-left: 10px;
+            color: var(--accent);
+            transition: transform .2s ease-in-out;
+        }
+    }
+
+    // .applications__body
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+
+        padding-top: 11px;
+    }
+
+    // .applications__item
+
+    &__item {
+        margin: 11px 0; padding: 6px;
+
+        display: grid;
+        grid-template-columns: $grid_columns_mob;
+        @include _992 {
+            grid-template-columns: $grid_columns;
+        }
+
+        border-radius: 10px;
+
+        transition: background .2s ease-in-out;
+
+        &:hover {
+            background: var(--accent-bg);
+            
+        }
+
+        &:hover &--param._accent {
+            color: var(--white);
+            background: var(--accent);
+        }
+
+        // .applications__item--param
+
+        &--param {
+            align-self: center;
+
+            font-size: 1rem;
+            @include _992 {
+                font-size: 1.25rem;
+            }
+            line-height: 133%;
+
+            text-align: center;
+            color: var(--dark);
+
+            border-right: 1px solid var(--light);
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0 5px;
+
+            &._accent {
+                border-right: 0;
+
+                color: var(--accent);
+                background: var(--accent-bg);
+
+                padding: 6px;
+                border-radius: 10px;
+
+                transition: background .2s ease-in-out, color .2s ease-in-out;
+            }
+        }
+    }
+}
+

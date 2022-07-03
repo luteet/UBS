@@ -1,0 +1,53 @@
+@@include("html/_header-admin.html")
+
+<main class="main">
+    <section class="applications">
+        <div class="applications__container _container">
+            <div class="applications__table">
+                <div class="applications__table--wrapper">
+                    <div class="applications__header">
+                        <div class="applications__header--param _accent">
+                            №
+                        </div>
+                        <div class="applications__header--param">
+                            Имя
+                        </div>
+                        <div class="applications__header--param">
+                            Почта
+                        </div>
+                        <div class="applications__header--param">
+                            Телефон
+                        </div>
+                        <div class="applications__header--param">
+                            Язык
+                        </div>
+                        <div class="applications__header--param">
+                            <form action="#" class="applications__header--time applications__sort">
+                                <input type="checkbox" name="time-sort" id="time-sort" class="applications__sort--input">
+                                <label for="time-sort" class="applications__sort--label">
+                                    Время
+                                    <i class="applications__sort--select-arrow _icon-select-arrow"></i>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="applications__header--param">
+                            Дата
+                        </div>
+                    </div>
+                    <div class="applications__body">
+                        @@loop("html/applications/_applications-item.html", [
+                            {"number": '1'},
+                            {"number": '2'},
+                            {"number": '3'},
+                            {"number": '4'},
+                            {"number": '5'},
+                            {"number": '6'},
+                        ])
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+@@include("html/_footer-none.html")

@@ -1,0 +1,105 @@
+
+
+$containerPadding: 15;
+
+$container: 1260 + ($containerPadding * 2);
+$containerMin: 600 + ($containerPadding * 2);
+$containerLarge: 1000 + ($containerPadding * 2);
+
+:root {
+    --title-font: 'Lora';
+    --main-font: 'Lora';
+    
+    --accent: #3561B6;
+    --accent-bg: #F1F4F8;
+
+    --dark: #363636;
+    --dark-gray: #6A6A6A;
+
+    --light: #DBDBDB;
+
+    --white: #FFF;
+    --black: #000;
+
+    --container-padding: 15px;
+}
+
+@font-face {
+    @include font-include('Lora', 400, swap, normal, 'Lora-Regular');
+}
+
+@font-face {
+    @include font-include('Lora', 500, swap, normal, 'Lora-Medium');
+}
+
+@font-face {
+    @include font-include('Lora', 600, swap, normal, 'Lora-SemiBold');
+}
+
+@font-face {
+    @include font-include('Lora', 700, swap, normal, 'Lora-Bold');
+}
+
+@font-face {
+    @include font-include('Montserrat', 600, swap, normal, 'Montserrat-SemiBold');
+}
+
+@font-face {
+    @include font-include('Montserrat', 700, swap, normal, 'Montserrat-Bold');
+}
+
+
+@font-face {
+    font-family: 'USB-icons';
+    src:
+      url('USB-icons.ttf?qrpeqc') format('truetype'),
+      url('USB-icons.woff?qrpeqc') format('woff'),
+      url('USB-icons.svg?qrpeqc#USB-icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  
+  [class^="_icon-"], [class*=" _icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'USB-icons' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  ._icon-calendar::before {
+    content: "\e907";
+  }
+  ._icon-arrow::before {
+    content: "\e900";
+  }
+  ._icon-close::before {
+    content: "\e901";
+  }
+  ._icon-copy::before {
+    content: "\e902";
+  }
+  ._icon-delete::before {
+    content: "\e903";
+  }
+  ._icon-export-file::before {
+    content: "\e904";
+  }
+  ._icon-logout::before {
+    content: "\e905";
+  }
+  ._icon-password::before {
+    content: "\e906";
+  }
+  ._icon-select-arrow::before {
+    content: "\e909";
+  }
+  
