@@ -29,6 +29,8 @@
             border-radius: 15px;
         }
 
+        
+
         padding: 45px 0 15px 0;
 
         &--wrapper {
@@ -40,6 +42,15 @@
                 min-width: 1140px;
             }
         }
+    }
+
+    &__table--wrapper._active &__item {
+        background: var(--accent-bg);
+    }
+
+    &__table--wrapper._active &__item--param._accent {
+        color: var(--white);
+        background: var(--accent);
     }
 
     // .applications__header
@@ -153,11 +164,11 @@
 
         transition: background .2s ease-in-out;
 
-        &._active {
+        &:hover {
             background: var(--accent-bg);
         }
 
-        &._active &--param._accent {
+        &:hover &--param._accent {
             color: var(--white);
             background: var(--accent);
         }

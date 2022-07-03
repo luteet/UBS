@@ -1975,6 +1975,15 @@ body._popup-active {
   min-width: 925px;
 }
 
+.applications__table--wrapper._active .applications__item {
+  background: var(--accent-bg);
+}
+
+.applications__table--wrapper._active .applications__item--param._accent {
+  color: var(--white);
+  background: var(--accent);
+}
+
 .applications__header {
   padding: 0 6px;
   display: -ms-grid;
@@ -2058,11 +2067,11 @@ body._popup-active {
   transition: background 0.2s ease-in-out;
 }
 
-.applications__item._active {
+.applications__item:hover {
   background: var(--accent-bg);
 }
 
-.applications__item._active .applications__item--param._accent {
+.applications__item:hover .applications__item--param._accent {
   color: var(--white);
   background: var(--accent);
 }
