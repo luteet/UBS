@@ -218,7 +218,7 @@ body.addEventListener('click', function (event) {
 
     let applicationsItemBtn = thisTarget.closest('.applications__item--btn');
     if(applicationsItemBtn) {
-      applicationsItemBtn.parentElement.parentElement.classList.toggle('_active');
+      applicationsItemBtn.closest('.applications__table--wrapper').classList.toggle('_active');
     }
 
 
