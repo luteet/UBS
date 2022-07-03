@@ -215,11 +215,18 @@ body.addEventListener('click', function (event) {
     }
 
 
+
+    let applicationsItemBtn = thisTarget.closest('.applications__item--btn');
+    if(applicationsItemBtn) {
+      applicationsItemBtn.parentElement.classList.toggle('_active');
+    }
+
+
 })
 
 function customeDate() {
 
-  Datepicker.locales.ru = {
+  /* Datepicker.locales.ru = {
     days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
     daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб"],
     daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
@@ -238,7 +245,13 @@ function customeDate() {
       language: "ru"
     });
     
-  });
+  }); */
+
+  new AirDatepicker('._custome-date', {
+    /* locale: localeEn */
+    dateFormat: 'dd/MM/yyyy'
+  })
+
    
 }
 

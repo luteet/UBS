@@ -162,7 +162,11 @@ body {
     font-family: 'Montserrat';
 }
 
-.datepicker-cell.day.selected {
+.air-datepicker-cell.-day- {
+    transition: background .2s ease-in-out;
+}
+
+.air-datepicker-cell.-day-.-selected- {
     background: var(--accent);
 }
 
