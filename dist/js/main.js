@@ -219,6 +219,19 @@ body.addEventListener('click', function (event) {
     let applicationsItemBtn = thisTarget.closest('.applications__item--btn');
     if(applicationsItemBtn) {
       applicationsItemBtn.closest('.applications__table--wrapper').classList.toggle('_active');
+    } else {
+      document.querySelector('.applications__table--wrapper').classList.remove('_active');
+    }
+
+
+
+    let applicationsItem = thisTarget.closest('.applications__item');
+    if(applicationsItem) {
+      applicationsItem.classList.toggle('_active');
+    } else {
+      document.querySelectorAll('.applications__item').forEach(thisElement => {
+        thisElement.classList.remove('_active');
+      })
     }
 
 
@@ -226,29 +239,9 @@ body.addEventListener('click', function (event) {
 
 function customeDate() {
 
-  /* Datepicker.locales.ru = {
-    days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
-    daysShort: ["Вск", "Пнд", "Втр", "Срд", "Чтв", "Птн", "Суб"],
-    daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
-    months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
-    monthsShort: ["Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"],
-    today: "Сегодня",
-    clear: "Очистить",
-    format: "dd/mm/yyyy",
-    weekStart: 1,
-    monthsTitle: 'Месяцы'
-  };
-
-  const elem = document.querySelectorAll('._custome-date');
-  elem.forEach(thisDateElem => {
-    let datePicker = new Datepicker(thisDateElem, {
-      language: "ru"
-    });
-    
-  }); */
+  
 
   new AirDatepicker('._custome-date', {
-    /* locale: localeEn */
     dateFormat: 'dd/MM/yyyy'
   })
 

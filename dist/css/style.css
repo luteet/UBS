@@ -2067,11 +2067,13 @@ body._popup-active {
   transition: background 0.2s ease-in-out;
 }
 
-.applications__item:hover {
+.applications__item:hover,
+.applications__item._active {
   background: var(--accent-bg);
 }
 
-.applications__item:hover .applications__item--param._accent {
+.applications__item:hover .applications__item--param._accent,
+.applications__item._active .applications__item--param._accent {
   color: var(--white);
   background: var(--accent);
 }

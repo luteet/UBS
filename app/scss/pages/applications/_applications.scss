@@ -164,11 +164,11 @@
 
         transition: background .2s ease-in-out;
 
-        &:hover {
+        &:hover, &._active {
             background: var(--accent-bg);
         }
 
-        &:hover &--param._accent {
+        &:hover &--param._accent, &._active &--param._accent {
             color: var(--white);
             background: var(--accent);
         }
