@@ -3,15 +3,41 @@
     font-family: var(--title-font);
     font-weight: 700;
     line-height: 115%;
+    color: var(--white);
+    text-transform: uppercase;
+    margin: 0;
 
-    font-size: 1.875rem;
+    & span {
+        display: block;
+
+        font-size: 1.1rem;
+        line-height: 100%;
+
+        @media(min-width: 420px) {
+            font-size: 1.48rem;
+        }
+
+        @include _768 {
+            font-size: 1.85rem;
+        }
+    
+        @include _992 {
+            font-size: 2.6rem;
+        }
+    }
+
+    font-size: 2.5rem;
+
+    @media(min-width: 420px) {
+        font-size: 3.375rem;
+    }
 
     @include _768 {
-        font-size: 2.5rem;
+        font-size: 4.25rem;
     }
 
     @include _992 {
-        font-size: 3.125rem;
+        font-size: 6rem;
     }
 }
 

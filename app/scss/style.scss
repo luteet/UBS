@@ -7,11 +7,17 @@
 @import 'popup';
 
 @import 'main-sections/header-admin';
-
+@import 'main-sections/header';
 
 @import 'pages/login/login';
 @import 'pages/password/password';
 @import 'pages/applications/applications';
 
+@import 'pages/home/intro';
+@import 'pages/home/advantages';
+@import 'pages/home/video';
+@import 'pages/home/add-section';
+
+@import 'pages/about-us/about-us';
 
 @import 'main-sections/footer';

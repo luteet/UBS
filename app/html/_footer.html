@@ -1,26 +1,131 @@
         <footer class="footer">
             <div class="footer__container _container">
-                <div class="footer__row">
-                    <a href="#" class="footer__logo">
-                        <img src="img/logo.svg" width="150" loading="lazy" alt="" class="footer__logo--img">
-                    </a>
-                    <nav class="footer__nav">
-                        <ul class="footer__nav--list">
-                            <li class="footer__nav--item">
-                                <a href="#" class="footer__nav--link _nav-btn _btn-to-scroll">
-                                    LINK
-                                </a>
-                            </li>
-                            <li class="footer__nav--item">
-                                <a href="#" class="footer__nav--link _nav-btn _alt _btn-open-popup">
-                                    LINK
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                <a href="home.html" class="footer__logo">
+                    <img src="img/logo-2.svg" width="123" height="65" loading="lazy" alt="" class="footer__logo--img">
+                </a>
+                <nav class="footer__nav">
+                    <ul class="footer__nav--list">
+                        <li class="footer__nav--item">
+                            <a href="#" class="footer__nav--link">
+                                Политика конфиденциальности
+                            </a>
+                        </li>
+                        <li class="footer__nav--item">
+                            <span class="footer__nav--copy">
+                                © UBS Capital Group 2014 - 2022
+                            </span>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </footer>
+    </div>
+
+    <div class="feedback__popup _popup _min" id="feedback-popup" style="display: none; opacity: 0;">
+        <div class="feedback__popup--wrapper _popup-wrapper">
+            <div class="feedback__popup--bg _popup-bg _popup-close"></div>
+            <div class="feedback__popup--body _popup-body">
+                <button type="button" class="feedback__popup--close-btn _popup-close-btn _popup-close">
+                    <i class="feedback__popup--close-btn-icon _icon-close"></i>
+                </button>
+                <div class="feedback__popup--logo">
+                    <img src="img/logo.svg" width="130" height="70" loading="lazy" alt="" class="feedback__popup--logo-img">
+                </div>
+                <form action="#" class="feedback__popup--form">
+                    <div class="feedback__popup--row">
+                        <i class="feedback__popup--input-icon _icon-user"></i>
+                        <label class="feedback__popup--label">
+                            <input type="text" name="name" required placeholder="Имя" class="feedback__popup--input">
+                        </label>
+                    </div>
+                    <div class="feedback__popup--row">
+                        <i class="feedback__popup--input-icon _icon-email"></i>
+                        <label class="feedback__popup--label">
+                            <input type="text" name="email" required placeholder="Почта" class="feedback__popup--input">
+                        </label>
+                    </div>
+                    <div class="feedback__popup--row">
+                        <div class="feedback__popup--country-select input-select">
+                            <div class="input-select__body">
+                                <div class="input-select__current" data-input-value="+7">
+                                    <img src="img/icons/russia.svg" width="16" height="16" alt="" class="input-select__img">
+                                </div>
+                                <ul class="input-select__list">
+                                    <li class="input-select__option" data-input-value="+7">
+                                        <img src="img/icons/russia.svg" width="16" height="16" alt="" class="input-select__img">
+                                        <div class="input-select__text">
+                                            +7
+                                        </div>
+                                    </li>
+                                    <li class="input-select__option" data-input-value="+00">
+                                        <img src="img/icons/russia.svg" width="16" height="16" alt="" class="input-select__img">
+                                        <div class="input-select__text">
+                                            +00
+                                        </div>
+                                    </li>
+                                    <li class="input-select__option" data-input-value="+000">
+                                        <img src="img/icons/russia.svg" width="16" height="16" alt="" class="input-select__img">
+                                        <div class="input-select__text">
+                                            +000
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <label class="feedback__popup--label">
+                            <input type="tel" name="tel" required placeholder="Номер телефона" class="feedback__popup--input">
+                        </label>
+                    </div>
+                    <div class="feedback__popup--row">
+                        <div class="feedback__popup--country-select input-select">
+                            <div class="input-select__body">
+                                <div class="input-select__current">
+                                    <img src="img/icons/russia.svg" width="16" height="16" alt="" class="input-select__img">
+                                </div>
+                                <ul class="input-select__list">
+                                    <li class="input-select__option" data-input-value="Русский">
+                                        <img src="img/icons/russia.svg" width="16" height="16" alt="" class="input-select__img">
+                                        <div class="input-select__text">
+                                            Россия
+                                        </div>
+                                    </li>
+                                    <li class="input-select__option" data-input-value="Английский">
+                                        <img src="img/icons/russia.svg" width="16" height="16" alt="" class="input-select__img">
+                                        <div class="input-select__text">
+                                            Английский
+                                        </div>
+                                    </li>
+                                    <li class="input-select__option" data-input-value="Немецкий">
+                                        <img src="img/icons/russia.svg" width="16" height="16" alt="" class="input-select__img">
+                                        <div class="input-select__text">
+                                            Немецкий
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <label class="feedback__popup--label">
+                            <input type="text" name="language" required placeholder="Выберите язык общения" class="feedback__popup--input">
+                        </label>
+                    </div>
+                    <div class="feedback__popup--checkbox feedback__checkbox">
+                        <input id="checkbox-privacy" type="checkbox" name="privacy" required class="feedback__checkbox--input" checked>
+                        <label for="checkbox-privacy" class="feedback__checkbox--label">
+                            <span>
+                                Я принимаю условия 
+                            </span>
+                            <br>
+                            <a href="#">
+                                «Политики конфиденциальности» 
+                            </a>
+                        </label>
+                    </div>
+                    <button type="submit" class="feedback__checkbox--submit">
+                        Связаться сейчас
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script src="js/libs.min.js"></script>

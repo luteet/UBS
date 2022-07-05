@@ -220,7 +220,7 @@ body.addEventListener('click', function (event) {
     if(applicationsItemBtn) {
       applicationsItemBtn.closest('.applications__table--wrapper').classList.toggle('_active');
     } else {
-      document.querySelector('.applications__table--wrapper').classList.remove('_active');
+        if(document.querySelector('.applications__table--wrapper')) document.querySelector('.applications__table--wrapper').classList.remove('_active');
     }
 
 
@@ -235,11 +235,78 @@ body.addEventListener('click', function (event) {
     }
 
 
+
+    let videoPreview = thisTarget.closest('._video-preview');
+    if(videoPreview) {
+        let parent = videoPreview.closest('._video-block'),
+            video = (parent) ? parent.querySelector('._video-element') : false;
+        
+        if(video) {
+            videoPreview.classList.add('_hidden');
+            setTimeout(() => {
+                video.play();
+            },0)
+        }
+
+    }
+
+
+
+    let inputSelectCurrent = thisTarget.closest('.input-select__current');
+    if(inputSelectCurrent) {
+        
+        let parent  = inputSelectCurrent.parentElement;
+
+        if(parent.classList.contains('_active')) {
+            document.querySelectorAll('.input-select__body._active').forEach(thisInputSelect => {
+                thisInputSelect.classList.remove('_active');
+            })
+
+            parent.classList.remove('_active');
+        } else {
+            document.querySelectorAll('.input-select__body._active').forEach(thisInputSelect => {
+                thisInputSelect.classList.remove('_active');
+            })
+
+            parent.classList.add('_active');
+        }
+        
+
+        
+
+    }
+
+
+
+    let inputSelectOption = thisTarget.closest('.input-select__option');
+    if(inputSelectOption) {
+        let parent  = inputSelectOption.closest('.input-select__body'),
+            current = parent.querySelector('.input-select__current');
+
+        parent.classList.remove('_active');
+        current.innerHTML = `<img src="${inputSelectOption.querySelector('.input-select__img').getAttribute('src')}" width="16" height="16" alt="" class="input-select__img">`
+
+        if(inputSelectOption.dataset.inputValue) {
+            inputSelectOption.closest('.input-select').parentElement.querySelector('input').value = inputSelectOption.dataset.inputValue;
+        }
+
+    } else if(!thisTarget.closest('.input-select')) {
+        document.querySelectorAll('.input-select__body._active').forEach(thisInputSelect => {
+            thisInputSelect.classList.remove('_active');
+        })
+    }
+
+})
+
+document.querySelectorAll('.input-select__current').forEach(thisInputCurrent => {
+
+    if(thisInputCurrent.dataset.inputValue) {
+        thisInputCurrent.closest('.input-select').parentElement.querySelector('input').value = thisInputCurrent.dataset.inputValue;
+    }
+
 })
 
 function customeDate() {
-
-  
 
   new AirDatepicker('._custome-date', {
     dateFormat: 'dd/MM/yyyy'

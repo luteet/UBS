@@ -1,5 +1,8 @@
 .header {
-    position: absolute;
+    position: sticky;
+    @include _992 {
+        position: relative;
+    }
     left: 0; top: 0;
     width: 100%;
 
@@ -9,19 +12,22 @@
 
     transition: transform .2s ease-in-out;
 
+    padding: 12px 0;
+    background: var(--white);
+
     z-index: 99;
 
     &._active {
         position: fixed;
-        background-color: white;
 
         box-shadow: 0 0 5px 1px rgba(#000000, 0.3);
     }
-    &._active &__logo {
-        max-width: 125px;
-    }
     &__logo {
-        max-width: 150px;
+        z-index: 2;
+        max-width: 103px;
+        @include _992 {
+            max-width: 150px;
+        }
         &--img {
             width: 100%;
         }
@@ -35,7 +41,8 @@
     &__nav {
         position: absolute;
         left: 0; top: 0;
-        width: 100%; height: 100vh;
+        width: 100%; height: auto;
+        padding: 75px 0 15px;
 
         background-color: white;
 
@@ -61,32 +68,67 @@
         &--list {
             display: flex;
             flex-wrap: wrap;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
+            justify-content: center;
 
             height: 100%;
 
             @include _992 {
+                margin: 0 -15px;
                 align-items: stretch;
-                flex-direction: row;
             }
         }
         &--item {
-            width: 100%;
             text-align: center;
+
+            padding: 10px;
             
             @include _992 {
-                width: auto;
+                padding: 10px 15px;
             }
 
         }
-        &--link {
-            width: 100%;
+        &--btn {
+            display: flex;
+            align-items: center;
 
-            @include _992 {
-                width: auto;
+            border: 3px solid var(--accent);
+            border-radius: 10px;
+
+            padding: 18px 16px;
+
+            background: var(--accent);
+
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.875rem;
+            line-height: 133%;
+            text-transform: uppercase;
+
+            &._transparent {
+                background: transparent;
+                color: var(--accent);
+            }
+
+            transition: background .2s ease-in-out, border .2s ease-in-out, color .2s ease-in-out;
+
+            &:hover {
+                background: var(--accent-light);
+                border-color: var(--accent-light);
+                color: var(--white);
             }
 
         }
+        
+        &--btn-icon {
+            margin-left: 15px;
+            font-size: 20px;
+        }
+    }
+
+    &__burger {
+        background: var(--accent);
+
     }
 }

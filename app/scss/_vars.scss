@@ -11,15 +11,21 @@ $containerLarge: 1000 + ($containerPadding * 2);
     --main-font: 'Lora';
     
     --accent: #3561B6;
+    --accent-light: #4978d6;
+    --accent-light-2: #6F96E1;
+    --accent-light-3: #BDCCE8;
     --accent-bg: #F1F4F8;
 
     --dark: #363636;
+    
     --dark-gray: #6A6A6A;
 
     --light: #DBDBDB;
+    --light-2: #E2EBF8;
 
     --white: #FFF;
     --black: #000;
+    --black-2: #0C0C0C;
 
     --container-padding: 15px;
 }
@@ -50,15 +56,15 @@ $containerLarge: 1000 + ($containerPadding * 2);
 
 
 @font-face {
-    font-family: 'USB-icons';
-    src:
-      url('USB-icons.ttf?qrpeqc') format('truetype'),
-      url('USB-icons.woff?qrpeqc') format('woff'),
-      url('USB-icons.svg?qrpeqc#USB-icons') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: block;
-  }
+  font-family: 'USB-icons';
+  src:
+    url('USB-icons.ttf?gr8vg5') format('truetype'),
+    url('USB-icons.woff?gr8vg5') format('woff'),
+    url('USB-icons.svg?gr8vg5#USB-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
   
   [class^="_icon-"], [class*=" _icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
@@ -75,6 +81,21 @@ $containerLarge: 1000 + ($containerPadding * 2);
     -moz-osx-font-smoothing: grayscale;
   }
   
+  ._icon-check::before {
+    content: "\e90d";
+  }
+  ._icon-email::before {
+    content: "\e90b";
+  }
+  ._icon-user::before {
+    content: "\e90c";
+  }
+  ._icon-play-btn::before {
+    content: "\e90a";
+  }
+  ._icon-info::before {
+    content: "\e908";
+  }
   ._icon-calendar::before {
     content: "\e907";
   }
