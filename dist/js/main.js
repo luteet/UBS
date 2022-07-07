@@ -1,3 +1,71 @@
+
+function copyToClipboard(el) {
+    
+    // resolve the element
+    el = (typeof el === 'string') ? document.querySelector(el) : el;
+  
+    // handle iOS as a special case
+    if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+  
+      // save current contentEditable/readOnly status
+      var editable = el.contentEditable;
+      var readOnly = el.readOnly;
+  
+      // convert to editable with readonly to stop iOS keyboard opening
+      el.contentEditable = true;
+      el.readOnly = true;
+  
+      // create a selectable range
+      var range = document.createRange();
+      range.selectNodeContents(el);
+  
+      // select the range
+      var selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      el.setSelectionRange(0, 999999);
+  
+      // restore contentEditable/readOnly to original state
+      el.contentEditable = editable;
+      el.readOnly = readOnly;
+    }
+    else {
+      navigator.clipboard.writeText(el.value)
+        .then(() => {
+            
+        })
+        .catch(err => {
+          console.log('Something went wrong', err);
+        });
+      //el.select();
+      el.remove();
+    }
+  
+    // execute copy command
+    document.execCommand('copy');
+}
+
+function iosCopyToClipboard(el) {
+    var oldContentEditable = el.contentEditable,
+        oldReadOnly = el.readOnly,
+        range = document.createRange();
+
+    el.contentEditable = true;
+    el.readOnly = false;
+    range.selectNodeContents(el);
+
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(range);
+
+    el.setSelectionRange(0, 999999); // A big number, to cover anything that could be inside the element.
+
+    el.contentEditable = oldContentEditable;
+    el.readOnly = oldReadOnly;
+
+    document.execCommand('copy');
+}
+
 (function () {
   var FX = {
       easing: {
@@ -190,7 +258,6 @@ body.addEventListener('click', function (event) {
 
     thisTarget = event.target;
 
-    // Меню в шапке
     if (thisTarget.closest('._burger')) {
         menu.forEach(elem => {
             elem.classList.toggle('_active')
@@ -216,22 +283,59 @@ body.addEventListener('click', function (event) {
 
 
 
-    let applicationsItemBtn = thisTarget.closest('.applications__item--btn');
-    if(applicationsItemBtn) {
-      applicationsItemBtn.closest('.applications__table--wrapper').classList.toggle('_active');
-    } else {
-        if(document.querySelector('.applications__table--wrapper')) document.querySelector('.applications__table--wrapper').classList.remove('_active');
+    let applicationsItem = thisTarget.closest('.applications__item');
+    if(applicationsItem) {
+      applicationsItem.classList.toggle('_active');
+    } else if(!applicationsItem && !thisTarget.closest('.applications__item--btn') && !thisTarget.closest('._copy-btn')) {
+      document.querySelectorAll('.applications__item').forEach(thisElement => {
+        thisElement.classList.remove('_active');
+      })
     }
 
 
 
-    let applicationsItem = thisTarget.closest('.applications__item');
-    if(applicationsItem) {
-      applicationsItem.classList.toggle('_active');
-    } else {
-      document.querySelectorAll('.applications__item').forEach(thisElement => {
-        thisElement.classList.remove('_active');
-      })
+    let applicationsItemBtn = thisTarget.closest('.applications__item--btn');
+    if(applicationsItemBtn) {
+
+        applicationsItemBtn.closest('.applications__table--wrapper').querySelectorAll('.applications__item').forEach(thisElement => {
+            thisElement.classList.add('_active');
+        })
+
+    } else if(!applicationsItemBtn && !thisTarget.closest('.applications__item') && !thisTarget.closest('._copy-btn')) {
+        document.querySelectorAll('.applications__item').forEach(thisElement => {
+            thisElement.classList.remove('_active');
+        })
+    }
+
+
+
+    let copyBtn = thisTarget.closest('._copy-btn');
+    if(copyBtn) {
+        event.preventDefault();
+
+        let copyInputs = document.querySelectorAll('.applications__item._active._visible .applications__item--data'),
+        copyInput = document.createElement('input');
+        
+        copyInputs.forEach(thisInput => {
+            copyInput.value += thisInput.value + '. ';
+        })
+        
+        copyInput.value = copyInput.value.substring(0, copyInput.value.length - 1);
+
+        document.body.append(copyInput);
+
+        if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+            console.log('copy')
+            iosCopyToClipboard(copyInput)
+        } else {
+            copyInput.select();
+            document.execCommand("copy");
+        }
+
+        document.querySelectorAll('.applications__item').forEach(thisElement => {
+            thisElement.classList.remove('_active');
+        })
+
     }
 
 
@@ -308,57 +412,40 @@ document.querySelectorAll('.input-select__current').forEach(thisInputCurrent => 
 
 function customeDate() {
 
-  new AirDatepicker('._custome-date', {
-    dateFormat: 'dd/MM/yyyy'
+  document.querySelectorAll('._custome-date').forEach(thisCustomeDate => {
+    let date = new Date(),
+    day = (date.getDate() <= 9) ? '0' + date.getDate() : date.getDate(),
+    month = (date.getMonth() + 1 <= 9) ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
+    
+    thisCustomeDate.value = day + '/' + month + '/' + date.getFullYear();
+    
   })
 
+  new AirDatepicker('._custome-date', {
+    dateFormat: 'dd/MM/yyyy',
+    onSelect: function(arg) {
+        let date = arg.formattedDate;
+
+        document.querySelectorAll(`.applications__item`).forEach(thisElement => {
+            if(thisElement.dataset.date == date) {
+                setTimeout(() => {
+                    thisElement.style.display = 'grid';
+                },200)
+                setTimeout(() => {
+                    thisElement.classList.add('_visible');
+                },400)
+                
+            } else {
+                thisElement.classList.remove('_visible');
+                setTimeout(() => {
+                    thisElement.style.display = 'none';
+                },200)
+            }
+            
+        })
+    }
+  })
    
 }
 
 customeDate();
-
-
-// =-=-=-=-=-=-=-=-=-=-=-=- <slider> -=-=-=-=-=-=-=-=-=-=-=-=
-/*
-let slider = new Swiper('.__slider', {
-  
-    spaceBetween: 30,
-    slidesPerView: 1,
-    centeredSlides: false,
-
-    loop: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      992: {
-        slidesPerView: 3,
-        centeredSlides: true,
-    
-      },
-      600: {
-        slidesPerView: 2,
-        centeredSlides: false,
-      },
-    }
-}); 
-*/
-// =-=-=-=-=-=-=-=-=-=-=-=- </slider> -=-=-=-=-=-=-=-=-=-=-=-=
-
-
-/* 
-// =-=-=-=-=-=-=-=-=-=-=-=- <Анимации> -=-=-=-=-=-=-=-=-=-=-=-=
-
-wow = new WOW({
-mobile:       false,
-})
-wow.init();
-
-// =-=-=-=-=-=-=-=-=-=-=-=- </Анимации> -=-=-=-=-=-=-=-=-=-=-=-=
-
-*/

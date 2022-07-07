@@ -2432,6 +2432,9 @@ body._popup-active {
   grid-template-columns: 60px 13% 25% 17% 10% 12% auto;
   border-radius: 10px;
   transition: background 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .applications__item:hover,
@@ -2443,6 +2446,11 @@ body._popup-active {
 .applications__item._active .applications__item--param._accent {
   color: var(--white);
   background: var(--accent);
+}
+
+.applications__item._visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .applications__item--param {
