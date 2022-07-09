@@ -322,6 +322,10 @@ body.addEventListener('click', function (event) {
         document.querySelectorAll('.applications__item').forEach(thisElement => {
             thisElement.classList.remove('_active');
         })
+
+        document.querySelectorAll('.applications__item--btn').forEach(thisElement => {
+            thisElement.classList.remove('active');
+        })
     }
 
 
