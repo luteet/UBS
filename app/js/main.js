@@ -153,6 +153,10 @@ const body = document.querySelector('body'),
     burger = document.querySelector('._burger'),
     header = document.querySelector('.header');
 
+const player = new Plyr('#player', {
+    muted: true,
+});
+
 // =-=-=-=-=-=-=-=-=-=-=-=- <popup> -=-=-=-=-=-=-=-=-=-=-=-=
     
 let popupCheck = true, popupCheckClose = true;
@@ -253,7 +257,7 @@ if (popupCheck) {
 
 // =-=-=-=-=-=-=-=-=-=-=-=- </popup> -=-=-=-=-=-=-=-=-=-=-=-=
 
-let thisTarget;
+let thisTarget, applicationsItemBtnCheck = true;
 body.addEventListener('click', function (event) {
 
     thisTarget = event.target;
@@ -297,9 +301,22 @@ body.addEventListener('click', function (event) {
     let applicationsItemBtn = thisTarget.closest('.applications__item--btn');
     if(applicationsItemBtn) {
 
-        applicationsItemBtn.closest('.applications__table--wrapper').querySelectorAll('.applications__item').forEach(thisElement => {
-            thisElement.classList.add('_active');
-        })
+        if(applicationsItemBtn.classList.contains('active')) {
+
+            applicationsItemBtn.classList.remove('active');
+            applicationsItemBtn.closest('.applications__table--wrapper').querySelectorAll('.applications__item').forEach(thisElement => {
+                thisElement.classList.remove('_active');
+            })
+
+        } else {
+
+            applicationsItemBtn.classList.add('active');
+            applicationsItemBtn.closest('.applications__table--wrapper').querySelectorAll('.applications__item').forEach(thisElement => {
+                thisElement.classList.add('_active');
+            })
+
+        }
+        
 
     } else if(!applicationsItemBtn && !thisTarget.closest('.applications__item') && !thisTarget.closest('._copy-btn')) {
         document.querySelectorAll('.applications__item').forEach(thisElement => {
@@ -449,3 +466,46 @@ function customeDate() {
 }
 
 customeDate();
+
+function getCoords(elem) {
+    let box = elem.getBoundingClientRect();
+  
+    return {
+      top: box.top + window.pageYOffset,
+      right: box.right + window.pageXOffset,
+      bottom: box.bottom + window.pageYOffset,
+      left: box.left + window.pageXOffset
+    };
+  }
+
+const offsetCheck = document.querySelector('.offset-check-js');
+
+function scrollFunc() {
+    const videoBlock = document.querySelector('._video-block');
+
+    if(videoBlock) {
+        let top = getCoords(offsetCheck).top,
+            topPage = getCoords(videoBlock).top,
+            windowHeight = window.innerHeight;
+
+        if((top + (windowHeight / 3)) > topPage && !videoBlock.classList.contains('_active')) {
+            videoBlock.classList.add('_active');
+
+            let video = videoBlock.querySelector('._video-element'),
+                preview = videoBlock.querySelector('._video-preview');
+            
+            if(video) {
+                preview.classList.add('_hidden');
+                setTimeout(() => {
+                    video.play();
+                },0)
+            }
+        }
+    }
+
+    
+
+}
+
+window.onscroll = scrollFunc;
+

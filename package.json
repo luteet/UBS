@@ -26,6 +26,7 @@
     "gulp-webp": "^4.0.0",
     "gulp-webp-html": "^1.0.2",
     "normalize.css": "^8.0.1",
+    "plyr": "^3.7.2",
     "sass": "^1.45.0",
     "vanillajs-datepicker": "^1.2.0"
   },

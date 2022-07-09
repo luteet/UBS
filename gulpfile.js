@@ -66,6 +66,7 @@ function webpConvert() {
 function scriptsLib() {
     return src([
         'node_modules/air-datepicker/air-datepicker.js',
+        'node_modules/plyr/dist/plyr.min.js',
         //'node_modules/swiper/swiper-bundle.min.js', // Слайдер
         //'node_modules/shufflejs/dist/shuffle.min.js', // Tab Filter
         //'node_modules/sticky-js/dist/sticky.min.js' // Sticky
@@ -152,7 +153,8 @@ function stylesOriginal() {
 function CSSlibBuild() {
     return src([
         'node_modules/normalize.css/normalize.css',
-        'node_modules/air-datepicker/air-datepicker.css'
+        'node_modules/air-datepicker/air-datepicker.css',
+        //'node_modules/plyr/dist/plyr.css',
         //'node_modules/swiper/swiper-bundle.min.css', // Слайдер
         //'node_modules/slick-carousel/slick/slick.css', // Слайдер (jQuery)
         //'node_modules/magnific-popup/dist/magnific-popup.css' // Попап (jQuery)

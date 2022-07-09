@@ -69,15 +69,12 @@
 
         &--play-icon {
             font-size: max(10vw, 50px);
-
-            
-            
         }
     }
 
     // .video__element
 
-    &__element {
+    &__block > .plyr {
         grid-area: 1/1;
 
         width: 100%; height: auto;

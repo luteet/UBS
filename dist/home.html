@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- <link rel="SHORTCUT ICON" href="img/logo.svg" type="image/svg"> -->
+    <link rel="stylesheet" href="css/plyr.css">
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
@@ -115,7 +116,7 @@
                         <i class="video__preview--play-icon _icon-play-btn"></i>
                     </button>
                 </div>
-                <video width="1280" height="720" controls="controls" preload="metadata" class="video__element _video-element">
+                <video width="1280" height="720" controls="controls" playsinline muted="muted" preload="metadata" class="video__element _video-element" id="player">
                     <source src="video/video.mp4" type='video/mp4'>
                 </video>
             </div>
