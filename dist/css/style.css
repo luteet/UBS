@@ -2425,11 +2425,6 @@ body._popup-active {
 
 .applications__item {
   margin: 11px 0;
-  padding: 6px;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 60px 13% 25% 17% 10% 12% auto;
-  grid-template-columns: 60px 13% 25% 17% 10% 12% auto;
   border-radius: 10px;
   transition: background 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
@@ -2451,6 +2446,14 @@ body._popup-active {
 .applications__item._visible {
   opacity: 1;
   visibility: visible;
+}
+
+.applications__item--body {
+  padding: 6px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 60px 13% 25% 17% 10% 12% auto;
+  grid-template-columns: 60px 13% 25% 17% 10% 12% auto;
 }
 
 .applications__item--param {
@@ -3117,7 +3120,7 @@ body._popup-active {
     font-size: 1.25rem;
   }
 
-  .applications__item {
+  .applications__item--body {
     -ms-grid-columns: 78px 15% 23% 17% 12% 12% auto;
     grid-template-columns: 78px 15% 23% 17% 12% 12% auto;
   }

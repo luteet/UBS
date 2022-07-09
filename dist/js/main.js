@@ -433,24 +433,13 @@ document.querySelectorAll('.input-select__current').forEach(thisInputCurrent => 
 
 function customeDate() {
 
-  document.querySelectorAll('._custome-date').forEach(thisCustomeDate => {
-    let date = new Date(),
-    day = (date.getDate() <= 9) ? '0' + date.getDate() : date.getDate(),
-    month = (date.getMonth() + 1 <= 9) ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
-    
-    thisCustomeDate.value = day + '/' + month + '/' + date.getFullYear();
-    
-  })
-
-  new AirDatepicker('._custome-date', {
-    dateFormat: 'dd/MM/yyyy',
-    onSelect: function(arg) {
-        let date = arg.formattedDate;
+    function select(argtDate) {
+        let date = argtDate;
 
         document.querySelectorAll(`.applications__item`).forEach(thisElement => {
             if(thisElement.dataset.date == date) {
                 setTimeout(() => {
-                    thisElement.style.display = 'grid';
+                    thisElement.style.display = 'block';
                 },200)
                 setTimeout(() => {
                     thisElement.classList.add('_visible');
@@ -464,6 +453,22 @@ function customeDate() {
             }
             
         })
+    }
+
+  document.querySelectorAll('._custome-date').forEach(thisCustomeDate => {
+    let date = new Date(),
+    day = (date.getDate() <= 9) ? '0' + date.getDate() : date.getDate(),
+    month = (date.getMonth() + 1 <= 9) ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
+    
+    thisCustomeDate.value = day + '/' + month + '/' + date.getFullYear();
+    
+    select(day + '/' + month + '/' + date.getFullYear());
+  })
+
+  new AirDatepicker('._custome-date', {
+    dateFormat: 'dd/MM/yyyy',
+    onSelect: function(arg) {
+        select(arg.formattedDate);
     }
   })
    
@@ -480,7 +485,7 @@ function getCoords(elem) {
       bottom: box.bottom + window.pageYOffset,
       left: box.left + window.pageXOffset
     };
-  }
+}
 
 const offsetCheck = document.querySelector('.offset-check-js');
 

@@ -152,13 +152,7 @@
     // .applications__item
 
     &__item {
-        margin: 11px 0; padding: 6px;
-
-        display: grid;
-        grid-template-columns: $grid_columns_mob;
-        @include _992 {
-            grid-template-columns: $grid_columns;
-        }
+        margin: 11px 0; 
 
         border-radius: 10px;
 
@@ -178,6 +172,16 @@
 
         &._visible {
             opacity: 1; visibility: visible;
+        }
+
+        &--body {
+            padding: 6px;
+            
+            display: grid;
+            grid-template-columns: $grid_columns_mob;
+            @include _992 {
+                grid-template-columns: $grid_columns;
+            }
         }
         // .applications__item--param
 
